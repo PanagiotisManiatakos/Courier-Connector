@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tns="/CREATEAWB" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wsi="http://ws-i.org/schemas/conformanceClaim/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/" name="CREATEAWB" targetNamespace="/CREATEAWB" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="/CREATEAWB">
+      <xs:element name="READ">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="pel_user_code" type="xs:string" />
+            <xs:element name="pel_user_pass" type="xs:string" />
+            <xs:element name="pel_apost_code" type="xs:string" />
+            <xs:element name="pel_apost_sub_code" type="xs:string" />
+            <xs:element name="pel_user_lang" type="xs:string" />
+            <xs:element name="pel_paral_name" type="xs:string" />
+            <xs:element name="pel_paral_address" type="xs:string" />
+            <xs:element name="pel_paral_area" type="xs:string" />
+            <xs:element name="pel_paral_tk" type="xs:string" />
+            <xs:element name="pel_paral_thl_1" type="xs:string" />
+            <xs:element name="pel_paral_thl_2" type="xs:string" />
+            <xs:element name="pel_service" type="xs:string" />
+            <xs:element name="pel_baros" type="xs:string" />
+            <xs:element name="pel_temaxia" type="xs:string" />
+            <xs:element name="pel_paral_sxolia" type="xs:string" />
+            <xs:element name="pel_sur_1" type="xs:string" />
+            <xs:element name="pel_sur_2" type="xs:string" />
+            <xs:element name="pel_sur_3" type="xs:string" />
+            <xs:element name="pel_ant_poso" type="xs:string" />
+            <xs:element name="pel_ant_poso1" type="xs:string" />
+            <xs:element name="pel_ant_poso2" type="xs:string" />
+            <xs:element name="pel_ant_poso3" type="xs:string" />
+            <xs:element name="pel_ant_poso4" type="xs:string" />
+            <xs:element name="pel_ant_date1" type="xs:string" />
+            <xs:element name="pel_ant_date2" type="xs:string" />
+            <xs:element name="pel_ant_date3" type="xs:string" />
+            <xs:element name="pel_ant_date4" type="xs:string" />
+            <xs:element name="pel_asf_poso" type="xs:string" />
+            <xs:element name="pel_ref_no" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="READResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="st_flag" type="xs:integer" />
+            <xs:element name="st_title" type="xs:string" />
+            <xs:element name="vg_code" type="xs:string" />
+            <xs:element name="return_vg" type="xs:string" />
+            <xs:element name="epitagh_vg" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="35" name="vg_child" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="READInput">
+    <wsdl:part name="parameters" element="tns:READ" />
+  </wsdl:message>
+  <wsdl:message name="READOutput">
+    <wsdl:part name="parameters" element="tns:READResponse" />
+  </wsdl:message>
+  <wsdl:portType name="CREATEAWB">
+    <wsdl:operation name="READ">
+      <wsdl:input message="tns:READInput" />
+      <wsdl:output message="tns:READOutput" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CREATEAWB" type="tns:CREATEAWB">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="READ">
+      <soap:operation soapAction="" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CREATEAWB">
+    <wsdl:port name="CREATEAWB" binding="tns:CREATEAWB">
+      <documentation>
+        <wsi:Claim conformsTo="http://ws-i.org/profiles/basic/1.0" />
+      </documentation>
+      <soap:address location="http://212.205.47.226:9003" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tns="/TAXYDELETESIDETA" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wsi="http://ws-i.org/schemas/conformanceClaim/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/" name="TAXYDELETESIDETA" targetNamespace="/TAXYDELETESIDETA" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="/TAXYDELETESIDETA">
+      <xs:element name="DELETE">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="user_details">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="a_pel_code" type="xs:string" />
+                  <xs:element name="a_user_code" type="xs:integer" />
+                  <xs:element name="a_user_pass" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="vg_code" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DELETEResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="st_flag" type="xs:integer" />
+            <xs:element name="st_title" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="DELETEInput">
+    <wsdl:part name="parameters" element="tns:DELETE" />
+  </wsdl:message>
+  <wsdl:message name="DELETEOutput">
+    <wsdl:part name="parameters" element="tns:DELETEResponse" />
+  </wsdl:message>
+  <wsdl:portType name="TAXYDELETESIDETA">
+    <wsdl:operation name="DELETE">
+      <wsdl:input message="tns:DELETEInput" />
+      <wsdl:output message="tns:DELETEOutput" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="TAXYDELETESIDETA" type="tns:TAXYDELETESIDETA">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="DELETE">
+      <soap:operation soapAction="" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TAXYDELETESIDETA">
+    <wsdl:port name="TAXYDELETESIDETA" binding="tns:TAXYDELETESIDETA">
+      <documentation>
+        <wsi:Claim conformsTo="http://ws-i.org/profiles/basic/1.0" />
+      </documentation>
+      <soap:address location="http://online.taxydema.gr" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

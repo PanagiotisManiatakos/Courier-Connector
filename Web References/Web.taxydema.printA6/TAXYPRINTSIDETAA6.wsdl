@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tns="/TAXYPRINTSIDETAA6" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wsi="http://ws-i.org/schemas/conformanceClaim/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/" name="TAXYPRINTSIDETAA6" targetNamespace="/TAXYPRINTSIDETAA6" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="/TAXYPRINTSIDETAA6">
+      <xs:element name="PRINT">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="user_code" type="xs:string" />
+            <xs:element name="user_pass" type="xs:string" />
+            <xs:element name="pel_code" type="xs:string" />
+            <xs:element name="vg_code" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="PRINTResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="st_flag" type="xs:integer" />
+            <xs:element name="st_title" type="xs:string" />
+            <xs:element name="b64_string" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="PRINTInput">
+    <wsdl:part name="parameters" element="tns:PRINT" />
+  </wsdl:message>
+  <wsdl:message name="PRINTOutput">
+    <wsdl:part name="parameters" element="tns:PRINTResponse" />
+  </wsdl:message>
+  <wsdl:portType name="TAXYPRINTSIDETAA6">
+    <wsdl:operation name="PRINT">
+      <wsdl:input message="tns:PRINTInput" />
+      <wsdl:output message="tns:PRINTOutput" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="TAXYPRINTSIDETAA6" type="tns:TAXYPRINTSIDETAA6">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="PRINT">
+      <soap:operation soapAction="" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TAXYPRINTSIDETAA6">
+    <wsdl:port name="TAXYPRINTSIDETAA6" binding="tns:TAXYPRINTSIDETAA6">
+      <documentation>
+        <wsi:Claim conformsTo="http://ws-i.org/profiles/basic/1.0" />
+      </documentation>
+      <soap:address location="http://online.taxydema.gr" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
